@@ -1,0 +1,1 @@
+Test repository for automating Launch School's SPOT weekly session posts per course.
