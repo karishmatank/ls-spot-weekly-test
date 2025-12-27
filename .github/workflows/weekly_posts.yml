@@ -2,10 +2,9 @@ name: SPOT weekly when2meet posts
 
 # Controls when the workflow will run
 on:
-  workflow_dispatch:
-  # run weekly
   schedule:
-    - cron: "0 13 * * SAT"  # 1pm UTC Thursday
+    - cron: "45 13 * * 6"  # 1pm UTC Thursday (6 = Saturday for testing)
+  workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
