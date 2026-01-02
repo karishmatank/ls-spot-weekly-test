@@ -5,12 +5,14 @@ import time
 import config
 
 def get_form_dates(start_date):
+    """Get all dates from Sunday to Saturday, representing one complete week"""
     start = datetime.strptime(start_date, '%Y-%m-%d')
     date_range = [start + timedelta(days=x) for x in range(0, 7)]
 
     return "|".join([d.strftime("%Y-%m-%d")for d in date_range])
 
 def post_form(title, dates_str):
+    """Trigger w2m creation"""
     data = {
         'NewEventName': title,
         'DateTypes': 'SpecificDates',
@@ -33,6 +35,7 @@ def post_form(title, dates_str):
     return w2m_id
 
 def format_and_log(links):
+    """Format thread content for Slack"""
     *bulk_course_keys, last_course_key = config.courses
 
     for title in bulk_course_keys:
@@ -46,6 +49,7 @@ def format_and_log(links):
     return links
 
 def create_events(start_date):
+    """Create the w2m links"""
     links = {}
     dates_str = get_form_dates(start_date)
 
@@ -57,6 +61,7 @@ def create_events(start_date):
     return links
 
 def get_next_sunday():
+    """Get the next Sunday based on today's date"""
     today = date.today()
 
     # Sunday is 6 in weekday(): Monday is 0, Sunday is 6

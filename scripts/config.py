@@ -64,7 +64,9 @@ headers = {
 
 # Slack
 post_message_endpoint = "https://slack.com/api/chat.postMessage"
+get_history_endpoint = "https://slack.com/api/conversations.history"
 slack_bot_token = os.environ["SLACK_BOT_TOKEN"]
+slack_app_id = os.environ["SLACK_APP_ID"]
 channel_id = os.environ["SLACK_CHANNEL_ID"]
 icons = {
     'RB': ':ruby:',
